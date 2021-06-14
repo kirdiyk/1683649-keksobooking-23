@@ -1,3 +1,32 @@
+const TYPES_ARRAY = [
+  'palace',
+  'flat',
+  'house',
+  'bungalow',
+  'hotel',
+];
+
+const TIMES_ARRAY = [
+  '12:00',
+  '13:00',
+  '14:00',
+];
+
+const FESTURES_ARRAY = [
+  'wifi',
+  'dishwasher',
+  'parking',
+  'washer',
+  'elevator',
+  'conditioner',
+];
+
+const PHOTOS_ARRAY = [
+  'https://assets.htmlacademy.ru/content/intensive/javascript-1/keksobooking/duonguyen-8LrGtIxxa4w.jpg',
+  'https://assets.htmlacademy.ru/content/intensive/javascript-1/keksobooking/brandon-hoogenboom-SNxQGWxZQi0.jpg',
+  'https://assets.htmlacademy.ru/content/intensive/javascript-1/keksobooking/claire-rendall-b6kAwr1i0Iw.jpg',
+];
+
 const checkValue = (firstValue, secondValue) => (!((firstValue < 0 && secondValue < 0) || (secondValue < firstValue)));
 
 //for integer use two parametrs,for float use 3 paramerts
@@ -14,45 +43,10 @@ const getRandomRangeIntOrFloat = (firstValue, secondValue, fixValue) => {
 
 getRandomRangeIntOrFloat (2, -0.94, 1);
 
-const typeArray = [
-  'palace',
-  'flat',
-  'house',
-  'bungalow',
-  'hotel',
-];
-
-const checkinArray = [
-  '12:00',
-  '13:00',
-  '14:00',
-];
-
-const checkoutArray = [
-  '12:00',
-  '13:00',
-  '14:00',
-];
-
-const featuresArray = [
-  'wifi',
-  'dishwasher',
-  'parking',
-  'washer',
-  'elevator',
-  'conditioner',
-];
-
-const photosArray = [
-  'https://assets.htmlacademy.ru/content/intensive/javascript-1/keksobooking/duonguyen-8LrGtIxxa4w.jpg',
-  'https://assets.htmlacademy.ru/content/intensive/javascript-1/keksobooking/brandon-hoogenboom-SNxQGWxZQi0.jpg',
-  'https://assets.htmlacademy.ru/content/intensive/javascript-1/keksobooking/claire-rendall-b6kAwr1i0Iw.jpg',
-];
-
 const getRandomArrayElement = (elements) => elements[getRandomRangeIntOrFloat(0, elements.length - 1)];
 
 const createList = (elements) => {
-  const randomArrayValue = getRandomRangeIntOrFloat(0, 5);
+  const randomArrayValue = getRandomRangeIntOrFloat(1, 5);
   return elements.slice(0, randomArrayValue);
 };
 
@@ -67,14 +61,14 @@ const createPromo = () => {
       title: 'Холостятская берлога',
       address: `${LAT}, ${LNG}`,
       price: getRandomRangeIntOrFloat (15000, 999000),
-      type: getRandomArrayElement(typeArray),
+      type: getRandomArrayElement(TYPES_ARRAY),
       rooms: getRandomRangeIntOrFloat (1, 1200),
       guests: getRandomRangeIntOrFloat (1, 12),
-      checkin: getRandomArrayElement(checkinArray),
-      checkout: getRandomArrayElement(checkoutArray),
-      features: createList(featuresArray),
+      checkin: getRandomArrayElement(TIMES_ARRAY),
+      checkout: getRandomArrayElement(TIMES_ARRAY),
+      features: createList(FESTURES_ARRAY),
       description: 'Красиво жить не запретишь',
-      photos: createList(photosArray),
+      photos: createList(PHOTOS_ARRAY),
     },
     location: {
       lat: LAT,
