@@ -1,6 +1,7 @@
-import getRandomRangeIntOrFloat from './utils.js';
+import getRandomRangeIntOrFloat from './util.js';
 import getRandomArrayElement from './util.js';
-import createList from './util';
+import createList from './util.js';
+
 import { TYPES_ARRAY, TIMES_ARRAY, FESTURES_ARRAY, PHOTOS_ARRAY } from './const.js';
 
 const createPromo = () => {
