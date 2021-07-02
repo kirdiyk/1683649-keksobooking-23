@@ -33,4 +33,4 @@ const createPromo = () => {
 
 const PromoArray = Array(10).fill('').map(() => createPromo());
 
-PromoArray;
+export {PromoArray};

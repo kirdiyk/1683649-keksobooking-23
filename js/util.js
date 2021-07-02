@@ -22,4 +22,6 @@ const createList = (elements) => {
   return elements.slice(0, randomArrayValue);
 };
 
-export {getRandomRangeIntOrFloat, getRandomArrayElement, createList};
+const inserteData = (newBlock, fragment) => newBlock.appendChild(fragment); //вставляет новвое объявление в разметку
+
+export {getRandomRangeIntOrFloat, getRandomArrayElement, createList, inserteData};
