@@ -5,6 +5,7 @@ import { inserteData } from './util.js';
 const mapCanvas = document.querySelector('#map-canvas'); //отрисовывает сгенерированный DOM-element
 const userPopupTemplate = document.querySelector('#card').content.querySelector('.popup');
 
+//словарь
 const houseType = {
   flat: 'Квартира',
   bungalow: 'Бунгало',
