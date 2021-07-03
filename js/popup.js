@@ -43,13 +43,13 @@ const createPopup = ({offer, author}) => {
   }
 
   const photoListElement = advertPopup.querySelector('.popup__photos');
-  if (!offer.photo) {
+  if (!offer.photos) {
     photoListElement.remove();
   } else {
     photoListElement.querySelector('.popup__photo').remove();
 
     offer.photos.forEach((address) => {
-      photoListElement.insertAdjacentHTML('beforeend', `<img src="${address}" class="popup__photo" width="45" height="40">`);
+      photoListElement.insertAdjacentHTML('beforeend', `<img src="${address}" class="popup__photo" width="45" height="40" alt="Фотография жилья">`);
     });
   }
 
