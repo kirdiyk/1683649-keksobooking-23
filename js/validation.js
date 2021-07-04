@@ -19,6 +19,7 @@ formPrice.addEventListener('input', () => {
 
 const formRoom = document.querySelector('#room_number');
 const formGuest = document.querySelector('#capacity');
+
 const checkCapacity = (input) => {
   if (
     Number(formRoom.value) === MAX_ROOM && Number(formGuest.value) !== 0
@@ -43,7 +44,10 @@ const checkCapacity = (input) => {
 };
 
 formRoom.addEventListener('change', () => {
-  checkCapacity(formRoom);
+  if (formRoom.value < formGuest.value){
+    formGuest.value = formRoom.value;
+    checkCapacity(formRoom);
+  }
 });
 formGuest.addEventListener('change', () => {
   checkCapacity(formGuest);
