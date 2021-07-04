@@ -43,16 +43,6 @@ const checkCapacity = (input) => {
   input.reportValidity();
 };
 
-formRoom.addEventListener('change', () => {
-  if (formRoom.value < formGuest.value){
-    formGuest.value = formRoom.value;
-    checkCapacity(formRoom);
-  }
-});
-formGuest.addEventListener('change', () => {
-  checkCapacity(formGuest);
-});
-
 const formTimeIn = document.querySelector('#timein');
 const formTimeOut = document.querySelector('#timeout');
 
@@ -64,6 +54,16 @@ formTimeOut.addEventListener('change', () =>
 );
 
 const formTypeMatch = document.querySelector('#type');
+
+formRoom.addEventListener('change', () => {
+  if (formRoom.value < formGuest.value && formRoom.value !== MAX_ROOM){
+    formGuest.value = formRoom.value;
+  }
+  checkCapacity(formRoom);
+});
+formGuest.addEventListener('change', () => {
+  checkCapacity(formGuest);
+});
 
 formTypeMatch.addEventListener('change', () => {
   const value = PRICE_TYPE[formTypeMatch.value.toUpperCase()];
