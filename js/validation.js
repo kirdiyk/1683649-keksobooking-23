@@ -1,22 +1,5 @@
-import {MIN_LENGTH, MAX_LENGTH, MIN_PRICE, MAX_PRICE, MAX_ROOM} from './const.js';
-
-const formTitle = document.querySelector('#title');
-formTitle.addEventListener('input', () => {
-  const valueLength = formTitle.value.length;
-  if (valueLength < MIN_LENGTH) {
-    formTitle.setCustomValidity(
-      `Необходимо дописать ${MIN_LENGTH - valueLength} символ. Минимальная длина ${MIN_LENGTH}`,
-    );
-  } else if (valueLength > MAX_LENGTH) {
-    formTitle.setCustomValidity(
-      `Сократите длину заголовка на ${valueLength - MAX_LENGTH} символ. Максимальная длина ${MAX_LENGTH}`,
-    );
-  } else {
-    formTitle.setCustomValidity('');
-  }
-
-  formTitle.reportValidity();
-});
+import {MIN_PRICE, MAX_PRICE, MAX_ROOM, PRICE_TYPE} from './const.js';
+import {sameValue} from './util.js';
 
 const formPrice = document.querySelector('#price');
 formPrice.addEventListener('input', () => {
@@ -66,3 +49,51 @@ formGuest.addEventListener('change', () => {
   checkCapacity(formGuest);
 });
 
+const formTimeIn = document.querySelector('#timein');
+const formTimeOut = document.querySelector('#timeout');
+
+formTimeIn.addEventListener('change', () =>
+  sameValue(formTimeIn, formTimeOut),
+);
+formTimeOut.addEventListener('change', () =>
+  sameValue(formTimeOut, formTimeIn),
+);
+
+const formTypeMatch = document.querySelector('#type');
+
+formTypeMatch.addEventListener('change', () => {
+  const value = PRICE_TYPE[formTypeMatch.value.toUpperCase()];
+  switch (formTypeMatch.value) {
+    case 'flat':
+      formPrice.setAttribute('min', value);
+      formPrice.setAttribute('placeholder', value);
+      break;
+    case 'bungalow':
+      formPrice.setAttribute('min', value);
+      formPrice.setAttribute('placeholder', value);
+      break;
+    case 'house':
+      formPrice.setAttribute('min', value);
+      formPrice.setAttribute('placeholder', value);
+      break;
+    case 'palace':
+      formPrice.setAttribute('min', value);
+      formPrice.setAttribute('placeholder', value);
+      break;
+    case 'hotel':
+      formPrice.setAttribute('min', value);
+      formPrice.setAttribute('placeholder', value);
+      break;
+  }
+});
+
+//так как не отобрабывают события на значения по умолчанию
+const valueFlat = PRICE_TYPE[formTypeMatch.value.toUpperCase()];
+
+if (formTypeMatch.value === 'flat') {
+  formPrice.setAttribute('min', valueFlat);
+}
+
+if (formRoom.value !== MAX_ROOM && formRoom.value < formGuest.value) {
+  formRoom.value = formGuest.value;
+}
