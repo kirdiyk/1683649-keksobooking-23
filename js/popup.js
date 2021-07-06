@@ -1,9 +1,9 @@
-import { PromoArray } from './data.js';
-import { inserteData } from './util.js';
+//import { PromoArray } from './data.js';
+//import { inserteData } from './util.js';
 
 //const map = document.querySelector('.map');
-const mapCanvas = document.querySelector('#map-canvas'); //отрисовывает сгенерированный DOM-element
-const userPopupTemplate = document.querySelector('#card').content.querySelector('.popup');
+//const mapCanvas = document.querySelector('#map-canvas'); //отрисовывает сгенерированный DOM-element
+//const userPopupTemplate = document.querySelector('#card').content.querySelector('.popup');
 
 //словарь
 const houseType = {
@@ -54,9 +54,9 @@ const createPopup = ({offer, author}) => {
     });
   }
 
-  popupFragment.appendChild(advertPopup); //добавляет во фрагмент объявление
+  //popupFragment.appendChild(advertPopup); //добавляет во фрагмент объявление
 
-  inserteData(mapCanvas, popupFragment);
+  //inserteData(mapCanvas, popupFragment);
 };
 
 createPopup(PromoArray[9]);
