@@ -1,10 +1,7 @@
 import { activateForm } from './form.js';
-import { getRandomRangeIntOrFloat } from './util.js';
-import {PromoArray} from './data.js';
-//import {createPopup} from './popup';
+import { createPopup, similarPromo } from './popup.js';
+
 const address = document.querySelector('#address');
-const latRandom = getRandomRangeIntOrFloat(35.65, 35.7, 5);
-const lngRandom = getRandomRangeIntOrFloat(139.7, 139.8, 5);
 
 const map = L.map('map-canvas')
   .on('load', () => {
@@ -15,8 +12,9 @@ const map = L.map('map-canvas')
       lat: 35.68352,
       lng: 139.75245,
     },
-    10,
+    12,
   );
+
 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
   attribution:
     '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
@@ -24,11 +22,6 @@ L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
 
 const mainIcon = L.icon({
   iconUrl: './img/main-pin.svg',
-  iconSize: [52, 52],
-  iconAnchor: [26, 52],
-});
-const alternativeIcon = L.icon({
-  iconUrl: './img/pin.svg',
   iconSize: [52, 52],
   iconAnchor: [26, 52],
 });
@@ -43,19 +36,26 @@ const mainMarker = L.marker(
     icon: mainIcon,
   },
 );
+
 mainMarker.addTo(map);
 
-const alternativeMarker = L.marker(
-  {
-    lat: latRandom,
-    lng: lngRandom,
-  },
-  {
-    draggable: true,
-    icon: alternativeIcon,
-  },
-);
-alternativeMarker.addTo(map);
+mainMarker.on('moveend', (evt) => {
+  const userCoordinate = evt.target.getLatLng();
+  const lat = userCoordinate.lat.toFixed(5);
+  const lng = userCoordinate.lng.toFixed(5);
+  address.value = `${lat},  ${lng}`;
+});
+
+const searchArea = L.circle( {
+  lat: 35.6952,
+  lng: 139.757,
+}, {
+  color: 'pink',
+  fillColor: 'orange',
+  fillOpacity: 0.3,
+  radius: 10000,
+});
+searchArea.addTo(map);
 
 const resetButton = document.querySelector('.ad-form__reset');
 resetButton.addEventListener('click', () => {
@@ -63,7 +63,6 @@ resetButton.addEventListener('click', () => {
     lat: 35.6952,
     lng: 139.757,
   });
-  alternativeMarker.remove();
   map.setView(
     {
       lat: 35.68954,
@@ -71,39 +70,39 @@ resetButton.addEventListener('click', () => {
     },
     10,
   );
+  searchArea.remove();
 });
 
-mainMarker.on('moveend', (evt) => {
-  const coordinates = evt.target.getLatLng();
-  const lat = coordinates.lat.toFixed(5);
-  const lng = coordinates.lng.toFixed(5);
-  address.value = `${lat},  ${lng}`;
-});
+const markerGroup = L.layerGroup().addTo(map);
 
-const markers = PromoArray(10);
+const createMarker = (avatar, offer, point) => {
+  const {lat, lng} = point;
 
-// markers.forEach((item) => {
-//   const marker = L.marker(
-//     {
-//       lat: item.offer.location.lat,
-//       lng: item.offer.location.lng,
-//     },
-//     { icon: alternativeIcon },
-//   );
+  const icon = L.icon({
+    iconUrl: 'img/pin.svg',
+    iconSize: [40, 40],
+    iconAnchor: [20, 40],
+  });
 
-//   marker.addTo(map);
-// });
+  const marker = L.marker(
+    {
+      lat,
+      lng,
+    },
+    {
+      icon,
+    },
+  );
 
-// eslint-disable-next-line no-unused-vars
-const createMarkers = (arr) => {
-  markers.forEach((obj) => {
-    const marker = L.marker(
+  marker
+    .addTo(markerGroup)
+    .bindPopup(
+      createPopup(avatar, offer),
       {
-        lat: obj.offer.location.lat,
-        lng: obj.offer.location.lng,
+        keepInView: true,
       },
-      { icon: alternativeIcon },
     );
+};
 
 similarPromo.forEach((objectPromo) => {
   createMarker(objectPromo.avatar, objectPromo.offer, objectPromo.location);
