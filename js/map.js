@@ -105,9 +105,6 @@ const createMarkers = (arr) => {
       { icon: alternativeIcon },
     );
 
-    marker.addTo(map).bindPopup(createPopup(obj), {
-      keepInView: true,
-    });
-  });
-};
-
+similarPromo.forEach((objectPromo) => {
+  createMarker(objectPromo.avatar, objectPromo.offer, objectPromo.location);
+});
