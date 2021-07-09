@@ -1,5 +1,6 @@
 import { activateForm } from './form.js';
 import { createPopup, similarPromo } from './popup.js';
+//import {TOKYO_LAT_LNG} from '/.const';
 
 const address = document.querySelector('#address');
 
@@ -11,8 +12,7 @@ const map = L.map('map-canvas')
     {
       lat: 35.68352,
       lng: 139.75245,
-    },
-    12,
+    }, 12,
   );
 
 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -108,3 +108,4 @@ similarPromo.forEach((objectPromo) => {
   createMarker(objectPromo.avatar, objectPromo.offer, objectPromo.location);
 });
 
+export {mainMarker};

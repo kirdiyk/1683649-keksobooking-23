@@ -101,3 +101,5 @@ if (formTypeMatch.value === 'flat') {
 if (formRoom.value !== MAX_ROOM && formRoom.value < formGuest.value) {
   formRoom.value = formGuest.value;
 }
+
+export {formGuest, formPrice, formTypeMatch, formTimeIn, formTimeOut, formRoom};

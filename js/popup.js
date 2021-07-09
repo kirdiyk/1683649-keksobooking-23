@@ -55,7 +55,4 @@ const createPopup = (author, offer) => {
   return advertPopup;
 };
 
-
-//createPopup(PromoArray[9]);
-
 export {createPopup, similarPromo, mapCanvas};
