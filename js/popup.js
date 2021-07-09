@@ -55,4 +55,4 @@ const createPopup = (author, offer) => {
   return advertPopup;
 };
 
-export {createPopup, similarPromo, mapCanvas};
+export {createPopup, similarPromo, mapCanvas, map};
