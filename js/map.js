@@ -1,6 +1,6 @@
 import { activateForm } from './form.js';
-import { createPopup, similarPromo } from './popup.js';
-//import {TOKYO_LAT_LNG} from '/.const';
+import { createPopup } from './popup.js';
+import {TOKYO_LAT_LNG} from './const.js';
 
 const address = document.querySelector('#address');
 
@@ -9,10 +9,7 @@ const map = L.map('map-canvas')
     activateForm(false);
   })
   .setView(
-    {
-      lat: 35.68352,
-      lng: 139.75245,
-    }, 12,
+    TOKYO_LAT_LNG, 12,
   );
 
 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -53,7 +50,7 @@ const searchArea = L.circle( {
   color: 'pink',
   fillColor: 'orange',
   fillOpacity: 0.3,
-  radius: 10000,
+  radius: 7000,
 });
 searchArea.addTo(map);
 
@@ -104,8 +101,19 @@ const createMarker = (avatar, offer, point) => {
     );
 };
 
-similarPromo.forEach((objectPromo) => {
-  createMarker(objectPromo.avatar, objectPromo.offer, objectPromo.location);
-});
+// similarPromo.forEach((objectPromo) => {
+//   createMarker(objectPromo.avatar, objectPromo.offer, objectPromo.location);
+// });
 
-export {mainMarker};
+const createPromoMap = (data) => {
+  data.forEach((objectPromo) => {
+    createMarker(objectPromo.avatar, objectPromo.offer, objectPromo.location);
+
+  });
+};
+
+const clearAdress = () => {
+  address.value = `${TOKYO_LAT_LNG.lat}, ${TOKYO_LAT_LNG.lng}`;
+};
+
+export {mainMarker, clearAdress, createMarker, createPromoMap};

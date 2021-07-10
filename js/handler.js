@@ -5,10 +5,10 @@ const noticeField = document.querySelector('.notice');
 
 const getMessage = (value) => {
   const messagePopUp = value.cloneNode(true);
-  messagePopUp.style.zIndex = 100;
+  messagePopUp.style.zIndex = '100';
   messagePopUp.style.position = 'sticky';
-  messagePopUp.style.top = 0;
-  messagePopUp.style.bottom = 0;
+  messagePopUp.style.top = '0';
+  messagePopUp.style.bottom = '0';
 
   noticeField.append(messagePopUp);
 

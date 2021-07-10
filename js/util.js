@@ -1,7 +1,7 @@
-import { map } from './popup';
-import {address}  from './validation.js';
+import { map } from './popup.js';
+//import {address}  from './validation.js';
 import {formGuest, formPrice, formTypeMatch, formTimeIn, formTimeOut, formRoom} from './validation.js';
-import {TOKYO_LAT_LNG} from '/.const.js';
+import {TOKYO_LAT_LNG} from './const.js';
 import { mainMarker } from './map.js';
 
 const checkValue = (firstValue, secondValue) => (!((firstValue < 0 && secondValue < 0) || (secondValue < firstValue)));
@@ -49,10 +49,6 @@ const clearMap = () => {
   mainMarker.setLatLng(TOKYO_LAT_LNG);
 };
 
-const clearAdress = () => {
-  address.value = `${TOKYO_LAT_LNG.lat}, ${TOKYO_LAT_LNG.lng}`;
-};
-
 const showAlert = (message) => {
   const alertContainer = document.createElement('div');
   alertContainer.textContent = message;
@@ -68,4 +64,4 @@ const showAlert = (message) => {
 const inserteData = (newBlock, fragment) => newBlock.appendChild(fragment); //вставляет новвое объявление в разметку
 
 
-export {getRandomRangeIntOrFloat, getRandomArrayElement, createList, inserteData, sameValue, showAlert, clearAdress, clearMap, clearForm};
+export {getRandomRangeIntOrFloat, getRandomArrayElement, createList, inserteData, sameValue, showAlert, clearMap, clearForm};

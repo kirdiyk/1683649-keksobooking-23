@@ -1,4 +1,4 @@
-import { PromoArray } from './data.js';
+//import { PromoArray } from './data.js';
 //import { inserteData } from './util.js';
 
 const map = document.querySelector('.map');
@@ -14,18 +14,18 @@ const houseType = {
   hotel: 'Отель',
 };
 
-const similarPromo = PromoArray;
+//const similarPromo = PromoArray;
 
 const createPopup = (author, offer) => {
   const advertPopup = userPopupTemplate.cloneNode(true);
-  //author.title ? advertPopup.querySelector('.popup__title').textContent = offer.title : advertPopup.querySelector('.popup__title').remove();
+  offer.title ? advertPopup.querySelector('.popup__title').textContent = offer.title : advertPopup.querySelector('.popup__title').remove();
   offer.address ? advertPopup.querySelector('.popup__text--address').textContent = offer.address : advertPopup.querySelector('.popup__text--address').remove() ;
   offer.price ? advertPopup.querySelector('.popup__text--price').textContent = `${offer.price} ₽/ночь` : advertPopup.querySelector('.popup__text--price').remove();
   offer.type ? advertPopup.querySelector('.popup__type').textContent = houseType[offer.type] : advertPopup.querySelector('.popup__type').remove();
   offer.rooms && offer.guests ? advertPopup.querySelector('.popup__text--capacity').textContent =  `${offer.rooms} комнаты для ${offer.guests} гостей` : advertPopup.querySelector('.popup__text--capacity').remove();
   offer.checkin && offer.checkout ? advertPopup.querySelector('.popup__text--time').textContent = `Заезд после ${offer.checkin}, выезд до ${offer.checkout}` : advertPopup.querySelector('.popup__text--time').remove();
   //? advertPopup.querySelector('.popup__description').textContent = (offer.description) ? advertPopup.querySelector('.popup__description').remove() : offer.description;
-  //advertPopup.querySelector('.popup__avatar').src = (!author.avatar) ? advertPopup.querySelector('.popup__avatar').remove() : author.avatar;
+  // advertPopup.querySelector('.popup__avatar').src = (!offer.avatar) ? advertPopup.querySelector('.popup__avatar').remove() : offer.avatar;
 
   //const features = advertPopup.querySelector('.popup__features');
 
@@ -55,4 +55,4 @@ const createPopup = (author, offer) => {
   return advertPopup;
 };
 
-export {createPopup, similarPromo, mapCanvas, map};
+export {createPopup, mapCanvas, map};
