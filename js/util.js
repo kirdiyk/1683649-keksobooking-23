@@ -1,5 +1,4 @@
 import { map } from './popup.js';
-//import {address}  from './validation.js';
 import {formGuest, formPrice, formTypeMatch, formTimeIn, formTimeOut, formRoom} from './validation.js';
 import {TOKYO_LAT_LNG} from './const.js';
 import { mainMarker } from './map.js';

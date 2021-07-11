@@ -1,6 +1,3 @@
-//import { PromoArray } from './data.js';
-//import { inserteData } from './util.js';
-
 const map = document.querySelector('.map');
 const mapCanvas = map.querySelector('#map-canvas'); //отрисовывает сгенерированный DOM-element
 const userPopupTemplate = document.querySelector('#card').content.querySelector('.popup');
@@ -14,8 +11,6 @@ const houseType = {
   hotel: 'Отель',
 };
 
-//const similarPromo = PromoArray;
-
 const createPopup = (author, offer) => {
   const advertPopup = userPopupTemplate.cloneNode(true);
   offer.title ? advertPopup.querySelector('.popup__title').textContent = offer.title : advertPopup.querySelector('.popup__title').remove();
@@ -24,10 +19,6 @@ const createPopup = (author, offer) => {
   offer.type ? advertPopup.querySelector('.popup__type').textContent = houseType[offer.type] : advertPopup.querySelector('.popup__type').remove();
   offer.rooms && offer.guests ? advertPopup.querySelector('.popup__text--capacity').textContent =  `${offer.rooms} комнаты для ${offer.guests} гостей` : advertPopup.querySelector('.popup__text--capacity').remove();
   offer.checkin && offer.checkout ? advertPopup.querySelector('.popup__text--time').textContent = `Заезд после ${offer.checkin}, выезд до ${offer.checkout}` : advertPopup.querySelector('.popup__text--time').remove();
-  //? advertPopup.querySelector('.popup__description').textContent = (offer.description) ? advertPopup.querySelector('.popup__description').remove() : offer.description;
-  // advertPopup.querySelector('.popup__avatar').src = (!offer.avatar) ? advertPopup.querySelector('.popup__avatar').remove() : offer.avatar;
-
-  //const features = advertPopup.querySelector('.popup__features');
 
   if (offer.features) {
     const modifiers = (offer.features).map((feature) => `popup__feature--${feature}`);

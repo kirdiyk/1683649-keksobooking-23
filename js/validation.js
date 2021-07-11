@@ -5,7 +5,7 @@ import { clearAdress } from './map.js';
 import { clearForm, clearMap } from './util.js';
 
 const formAddress = document.querySelector('#address');
-formAddress.setAttribute('placeholder', `${TOKYO_LAT_LNG.lat}, ${TOKYO_LAT_LNG.lng}`);
+formAddress.setAttribute('value', `${TOKYO_LAT_LNG.lat}, ${TOKYO_LAT_LNG.lng}`);
 
 const formPrice = document.querySelector('#price');
 formPrice.addEventListener('input', () => {

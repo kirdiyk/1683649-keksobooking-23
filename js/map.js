@@ -101,10 +101,6 @@ const createMarker = (avatar, offer, point) => {
     );
 };
 
-// similarPromo.forEach((objectPromo) => {
-//   createMarker(objectPromo.avatar, objectPromo.offer, objectPromo.location);
-// });
-
 const createPromoMap = (data) => {
   data.forEach((objectPromo) => {
     createMarker(objectPromo.avatar, objectPromo.offer, objectPromo.location);
