@@ -1,3 +1,8 @@
+import { map } from './popup.js';
+import {formGuest, formPrice, formTypeMatch, formTimeIn, formTimeOut, formRoom} from './validation.js';
+import {TOKYO_LAT_LNG} from './const.js';
+import { mainMarker } from './map.js';
+
 const checkValue = (firstValue, secondValue) => (!((firstValue < 0 && secondValue < 0) || (secondValue < firstValue)));
 
 //for integer use two parametrs,for float use 3 paramerts
@@ -26,6 +31,36 @@ const sameValue = (currentValue, changeValue) => {
   changeValue.value = currentValue.value;
 };
 
+
+const clearForm = () => {
+  formRoom.reset();
+  formGuest.reset();
+  formPrice.reset();
+  formTimeIn.reset();
+  formTimeOut.reset();
+  formTypeMatch.reset();
+};
+
+
+const clearMap = () => {
+  map.closePopup();
+  map.setView(TOKYO_LAT_LNG, 12);
+  mainMarker.setLatLng(TOKYO_LAT_LNG);
+};
+
+const showAlert = (message) => {
+  const alertContainer = document.createElement('div');
+  alertContainer.textContent = message;
+
+  document.body.append(alertContainer);
+  alertContainer.classList.add('alert-message');
+  scrollTo({
+    top: 0,
+    behavior: 'smooth',
+  });
+};
+
 const inserteData = (newBlock, fragment) => newBlock.appendChild(fragment); //вставляет новвое объявление в разметку
 
-export {getRandomRangeIntOrFloat, getRandomArrayElement, createList, inserteData, sameValue};
+
+export {getRandomRangeIntOrFloat, getRandomArrayElement, createList, inserteData, sameValue, showAlert, clearMap, clearForm};

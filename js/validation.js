@@ -1,5 +1,11 @@
-import {MIN_PRICE, MAX_PRICE, MAX_ROOM, PRICE_TYPE} from './const.js';
+import {MIN_PRICE, MAX_PRICE, MAX_ROOM, PRICE_TYPE, TOKYO_LAT_LNG} from './const.js';
 import {sameValue} from './util.js';
+import { setData } from './fetch.js';
+import { clearAdress } from './map.js';
+import { clearForm, clearMap } from './util.js';
+
+const formAddress = document.querySelector('#address');
+formAddress.setAttribute('value', `${TOKYO_LAT_LNG.lat}, ${TOKYO_LAT_LNG.lng}`);
 
 const formPrice = document.querySelector('#price');
 formPrice.addEventListener('input', () => {
@@ -101,3 +107,19 @@ if (formTypeMatch.value === 'flat') {
 if (formRoom.value !== MAX_ROOM && formRoom.value < formGuest.value) {
   formRoom.value = formGuest.value;
 }
+
+const form = document.querySelector('.ad-form');
+
+form.addEventListener('submit', (evt) => {
+  evt.preventDefault();
+  const formData = new FormData(document.querySelector('.ad-form'));
+  setData(formData);
+});
+
+form.addEventListener('reset', () => {
+  clearForm();
+  clearMap();
+  clearAdress();
+});
+
+export {formGuest, formPrice, formTypeMatch, formTimeIn, formTimeOut, formRoom};
