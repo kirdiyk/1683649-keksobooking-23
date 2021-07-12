@@ -1,6 +1,3 @@
-// import { map } from './popup.js';
-// import {TOKYO_LAT_LNG} from './const.js';
-// import { mainMarker } from './map.js';
 const mapFilters = document.querySelector('.map__filters');
 const adForm = document.querySelector('.ad-form');
 
@@ -35,12 +32,6 @@ const clearForm = () => {
   adForm.reset();
   mapFilters.reset();
 };
-
-// const clearMap = () => {
-//   map.closePopup();
-//   //L.map('map-canvas').setView(TOKYO_LAT_LNG, 12);
-//   mainMarker.setLatLng(TOKYO_LAT_LNG);
-// };
 
 const showAlert = (message) => {
   const alertContainer = document.createElement('div');
