@@ -1,7 +1,9 @@
 import { map } from './popup.js';
-import {formGuest, formPrice, formTypeMatch, formTimeIn, formTimeOut, formRoom} from './validation.js';
-import {TOKYO_LAT_LNG} from './const.js';
+import {formGuest, formPrice, formTypeMatch, formTimeIn, formTimeOut} from './validation.js';
+import {TOKYO_LAT_LNG, DEFAULT_ROOMS_GUESTS} from './const.js';
 import { mainMarker } from './map.js';
+//import { mapFilters } from './filter.js';
+const mapFilters = document.querySelector('.map__filters');
 
 const checkValue = (firstValue, secondValue) => (!((firstValue < 0 && secondValue < 0) || (secondValue < firstValue)));
 
@@ -32,21 +34,33 @@ const sameValue = (currentValue, changeValue) => {
 };
 
 
+const defaultRoomGuests = () => {
+  //formRoom.setAttribute('value', `${DEFAULT_ROOMS_GUESTS}`);
+  const formRoom = document.querySelector('#room_number');
+  formRoom.setAttribute('value', `${DEFAULT_ROOMS_GUESTS}`);
+  //formRoom.value = 3;
+};
+
 const clearForm = () => {
-  formRoom.reset();
-  formGuest.reset();
-  formPrice.reset();
-  formTimeIn.reset();
-  formTimeOut.reset();
-  formTypeMatch.reset();
+  defaultRoomGuests();
+  //formGuest.reset();
+  formPrice.reset;
+  formTimeIn.reset;
+  formTimeOut.reset;
+  formTypeMatch.reset;
+  mapFilters.reset;
 };
 
 
 const clearMap = () => {
-  map.closePopup();
+  map.closePopup;
   map.setView(TOKYO_LAT_LNG, 12);
   mainMarker.setLatLng(TOKYO_LAT_LNG);
 };
+
+// const clearFilters = () => {
+
+// };
 
 const showAlert = (message) => {
   const alertContainer = document.createElement('div');

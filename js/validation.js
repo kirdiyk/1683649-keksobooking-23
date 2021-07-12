@@ -7,6 +7,7 @@ import { clearForm, clearMap } from './util.js';
 const formAddress = document.querySelector('#address');
 formAddress.setAttribute('value', `${TOKYO_LAT_LNG.lat}, ${TOKYO_LAT_LNG.lng}`);
 
+
 const formPrice = document.querySelector('#price');
 formPrice.addEventListener('input', () => {
   const valuePrice = formPrice.value;

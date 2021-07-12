@@ -1,6 +1,6 @@
 import { HTTP_ADDRESS_GET, HTTP_ADDRESS_POST} from './const.js';
 import { getMessage, SUCCESS, ERROR } from './handler.js';
-import { showAlert, clearMap, clearForm } from './util.js';
+import { showAlert, clearMap, clearForm} from './util.js';
 import { clearAdress} from './map.js';
 
 const getData = (onSuccess) => fetch(HTTP_ADDRESS_GET)
@@ -32,6 +32,7 @@ const setData = (body) => {
     .then(() => clearAdress())
     .then(() => clearMap())
     .then(() => clearForm())
+    //.then(() => clearFilters())
     .catch(() => showAlert());
 };
 

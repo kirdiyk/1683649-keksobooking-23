@@ -5,8 +5,9 @@ import './data.js';
 import './fetch.js';
 
 import { getData } from './fetch.js';
-import {createPromoMap} from './map.js';
+import {onFilter, addFilters} from './filter.js';
 
-getData((promo) =>
-  createPromoMap(promo),
-);
+getData((promo) =>{
+  onFilter(promo);
+  addFilters(promo);
+});
