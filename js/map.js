@@ -112,4 +112,4 @@ const clearAdress = () => {
   address.value = `${TOKYO_LAT_LNG.lat}, ${TOKYO_LAT_LNG.lng}`;
 };
 
-export {mainMarker, clearAdress, createMarker, createPromoMap};
+export {mainMarker, clearAdress, createMarker, createPromoMap, markerGroup};

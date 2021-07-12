@@ -1,7 +1,5 @@
-import { map } from './popup.js';
-import {formGuest, formPrice, formTypeMatch, formTimeIn, formTimeOut, formRoom} from './validation.js';
-import {TOKYO_LAT_LNG} from './const.js';
-import { mainMarker } from './map.js';
+const mapFilters = document.querySelector('.map__filters');
+const adForm = document.querySelector('.ad-form');
 
 const checkValue = (firstValue, secondValue) => (!((firstValue < 0 && secondValue < 0) || (secondValue < firstValue)));
 
@@ -19,7 +17,6 @@ const getRandomRangeIntOrFloat = (firstValue, secondValue, fixValue) => {
 
 getRandomRangeIntOrFloat (2, -0.94, 1);
 
-
 const getRandomArrayElement = (elements) => elements[getRandomRangeIntOrFloat(0, elements.length - 1)];
 
 const createList = (elements) => {
@@ -31,21 +28,9 @@ const sameValue = (currentValue, changeValue) => {
   changeValue.value = currentValue.value;
 };
 
-
 const clearForm = () => {
-  formRoom.reset();
-  formGuest.reset();
-  formPrice.reset();
-  formTimeIn.reset();
-  formTimeOut.reset();
-  formTypeMatch.reset();
-};
-
-
-const clearMap = () => {
-  map.closePopup();
-  map.setView(TOKYO_LAT_LNG, 12);
-  mainMarker.setLatLng(TOKYO_LAT_LNG);
+  adForm.reset();
+  mapFilters.reset();
 };
 
 const showAlert = (message) => {
@@ -60,7 +45,4 @@ const showAlert = (message) => {
   });
 };
 
-const inserteData = (newBlock, fragment) => newBlock.appendChild(fragment); //вставляет новвое объявление в разметку
-
-
-export {getRandomRangeIntOrFloat, getRandomArrayElement, createList, inserteData, sameValue, showAlert, clearMap, clearForm};
+export {getRandomRangeIntOrFloat, getRandomArrayElement, createList, sameValue, showAlert, clearForm};
