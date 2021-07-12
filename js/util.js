@@ -1,9 +1,8 @@
 import { map } from './popup.js';
-import {formGuest, formPrice, formTypeMatch, formTimeIn, formTimeOut} from './validation.js';
-import {TOKYO_LAT_LNG, DEFAULT_ROOMS_GUESTS} from './const.js';
+import {TOKYO_LAT_LNG} from './const.js';
 import { mainMarker } from './map.js';
-//import { mapFilters } from './filter.js';
 const mapFilters = document.querySelector('.map__filters');
+const adForm = document.querySelector('.ad-form');
 
 const checkValue = (firstValue, secondValue) => (!((firstValue < 0 && secondValue < 0) || (secondValue < firstValue)));
 
@@ -21,7 +20,6 @@ const getRandomRangeIntOrFloat = (firstValue, secondValue, fixValue) => {
 
 getRandomRangeIntOrFloat (2, -0.94, 1);
 
-
 const getRandomArrayElement = (elements) => elements[getRandomRangeIntOrFloat(0, elements.length - 1)];
 
 const createList = (elements) => {
@@ -33,34 +31,17 @@ const sameValue = (currentValue, changeValue) => {
   changeValue.value = currentValue.value;
 };
 
-
-const defaultRoomGuests = () => {
-  //formRoom.setAttribute('value', `${DEFAULT_ROOMS_GUESTS}`);
-  const formRoom = document.querySelector('#room_number');
-  formRoom.setAttribute('value', `${DEFAULT_ROOMS_GUESTS}`);
-  //formRoom.value = 3;
-};
-
 const clearForm = () => {
-  defaultRoomGuests();
-  //formGuest.reset();
-  formPrice.reset;
-  formTimeIn.reset;
-  formTimeOut.reset;
-  formTypeMatch.reset;
-  mapFilters.reset;
+  adForm.reset();
+  mapFilters.reset();
 };
 
 
 const clearMap = () => {
   map.closePopup;
-  map.setView(TOKYO_LAT_LNG, 12);
+  L.map('map-canvas').setView(TOKYO_LAT_LNG, 12);
   mainMarker.setLatLng(TOKYO_LAT_LNG);
 };
-
-// const clearFilters = () => {
-
-// };
 
 const showAlert = (message) => {
   const alertContainer = document.createElement('div');
@@ -74,7 +55,4 @@ const showAlert = (message) => {
   });
 };
 
-const inserteData = (newBlock, fragment) => newBlock.appendChild(fragment); //вставляет новвое объявление в разметку
-
-
-export {getRandomRangeIntOrFloat, getRandomArrayElement, createList, inserteData, sameValue, showAlert, clearMap, clearForm};
+export {getRandomRangeIntOrFloat, getRandomArrayElement, createList, sameValue, showAlert, clearMap, clearForm};

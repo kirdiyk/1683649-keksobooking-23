@@ -123,4 +123,3 @@ form.addEventListener('reset', () => {
   clearAdress();
 });
 
-export {formGuest, formPrice, formTypeMatch, formTimeIn, formTimeOut, formRoom};
