@@ -2,7 +2,7 @@ import {MIN_PRICE, MAX_PRICE, MAX_ROOM, PRICE_TYPE, TOKYO_LAT_LNG} from './const
 import {sameValue} from './util.js';
 import { setData } from './fetch.js';
 import { clearAdress } from './map.js';
-import { clearForm, clearMap } from './util.js';
+import { clearForm } from './util.js';
 
 const formAddress = document.querySelector('#address');
 formAddress.setAttribute('value', `${TOKYO_LAT_LNG.lat}, ${TOKYO_LAT_LNG.lng}`);
@@ -119,7 +119,6 @@ form.addEventListener('submit', (evt) => {
 
 form.addEventListener('reset', () => {
   clearForm();
-  clearMap();
   clearAdress();
 });
 
