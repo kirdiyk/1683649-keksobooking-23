@@ -1,34 +1,3 @@
-const TYPES_ARRAY = [
-  'palace',
-  'flat',
-  'house',
-  'bungalow',
-  'hotel',
-];
-
-const TIMES_ARRAY = [
-  '12:00',
-  '13:00',
-  '14:00',
-];
-
-const FESTURES_ARRAY = [
-  'wifi',
-  'dishwasher',
-  'parking',
-  'washer',
-  'elevator',
-  'conditioner',
-];
-
-const PHOTOS_ARRAY = [
-  'https://assets.htmlacademy.ru/content/intensive/javascript-1/keksobooking/duonguyen-8LrGtIxxa4w.jpg',
-  'https://assets.htmlacademy.ru/content/intensive/javascript-1/keksobooking/brandon-hoogenboom-SNxQGWxZQi0.jpg',
-  'https://assets.htmlacademy.ru/content/intensive/javascript-1/keksobooking/claire-rendall-b6kAwr1i0Iw.jpg',
-];
-
-const MIN_LENGTH = 30;
-const MAX_LENGTH = 100;
 const MIN_PRICE = 0;
 const MAX_PRICE = 1000000;
 const MAX_ROOM = 100;
@@ -49,6 +18,9 @@ const TOKYO_LAT_LNG = {
   lng: 139.75245,
 };
 
+const MAP_ZOOM = 12;
+const MAP_RADIUS = 6000;
+
 const MAX_PROMO_AMOUNT = 10;
 
 const PRICES = {
@@ -56,11 +28,9 @@ const PRICES = {
   high: 50000,
 };
 
-const DEFAULT_ROOMS_GUESTS = 3;
-
 const PHOTOS_FORMAT = ['gif', 'jpg', 'jpeg', 'png'];
 const DEFAULT_AVA = 'img/muffin-grey.svg';
-const IMAGE_SIZE = '70';
+const IMAGE_SIZE = 100;
 
-export {TYPES_ARRAY, TIMES_ARRAY, FESTURES_ARRAY, PHOTOS_ARRAY, MIN_LENGTH, MAX_LENGTH, MIN_PRICE, MAX_PRICE, MAX_ROOM, PRICE_TYPE, HTTP_ADDRESS_GET, HTTP_ADDRESS_POST};
-export {TOKYO_LAT_LNG, MAX_PROMO_AMOUNT, PRICES, DEFAULT_ROOMS_GUESTS, PHOTOS_FORMAT, DEFAULT_AVA, IMAGE_SIZE};
+export { MIN_PRICE, MAX_PRICE, MAX_ROOM, PRICE_TYPE, HTTP_ADDRESS_GET, HTTP_ADDRESS_POST};
+export {TOKYO_LAT_LNG, MAP_ZOOM, MAP_RADIUS, MAX_PROMO_AMOUNT, PRICES, PHOTOS_FORMAT, DEFAULT_AVA, IMAGE_SIZE};

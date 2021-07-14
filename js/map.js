@@ -1,6 +1,6 @@
 import { activateForm } from './form.js';
 import { createPopup } from './popup.js';
-import {TOKYO_LAT_LNG} from './const.js';
+import {TOKYO_LAT_LNG, MAP_ZOOM, MAP_RADIUS} from './const.js';
 
 const address = document.querySelector('#address');
 
@@ -9,7 +9,7 @@ const map = L.map('map-canvas')
     activateForm(false);
   })
   .setView(
-    TOKYO_LAT_LNG, 12,
+    TOKYO_LAT_LNG, MAP_ZOOM,
   );
 
 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -24,10 +24,7 @@ const mainIcon = L.icon({
 });
 
 const mainMarker = L.marker(
-  {
-    lat: 35.6952,
-    lng: 139.757,
-  },
+  TOKYO_LAT_LNG,
   {
     draggable: true,
     icon: mainIcon,
@@ -43,29 +40,20 @@ mainMarker.on('moveend', (evt) => {
   address.value = `${lat},  ${lng}`;
 });
 
-const searchArea = L.circle( {
-  lat: 35.6952,
-  lng: 139.757,
-}, {
+const searchArea = L.circle( TOKYO_LAT_LNG, {
   color: 'pink',
   fillColor: 'orange',
   fillOpacity: 0.3,
-  radius: 7000,
+  radius: MAP_RADIUS,
 });
 searchArea.addTo(map);
 
 const resetButton = document.querySelector('.ad-form__reset');
 resetButton.addEventListener('click', () => {
-  mainMarker.setLatLng({
-    lat: 35.6952,
-    lng: 139.757,
-  });
+  mainMarker.setLatLng(TOKYO_LAT_LNG);
   map.setView(
-    {
-      lat: 35.68954,
-      lng: 139.69171,
-    },
-    10,
+    TOKYO_LAT_LNG,
+    MAP_ZOOM,
   );
   searchArea.remove();
 });

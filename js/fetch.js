@@ -2,6 +2,7 @@ import { HTTP_ADDRESS_GET, HTTP_ADDRESS_POST} from './const.js';
 import { getMessage, SUCCESS, ERROR } from './handler.js';
 import { showAlert, clearForm} from './util.js';
 import { clearAdress} from './map.js';
+import { clearAvatar } from './avatar.js';
 
 const getData = (onSuccess) => fetch(HTTP_ADDRESS_GET)
   .then((response) => response.json()) // получение данных с сервера
@@ -27,6 +28,7 @@ const setData = (body) => {
         getMessage(SUCCESS);
         clearForm();
         clearAdress();
+        clearAvatar();
       } else {
         getMessage(ERROR);
       }
