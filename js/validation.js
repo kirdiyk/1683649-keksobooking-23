@@ -3,6 +3,7 @@ import {sameValue} from './util.js';
 import { setData } from './fetch.js';
 import { clearAdress } from './map.js';
 import { clearForm } from './util.js';
+import {photoLoader} from './avatar';
 
 const formAddress = document.querySelector('#address');
 formAddress.setAttribute('value', `${TOKYO_LAT_LNG.lat}, ${TOKYO_LAT_LNG.lng}`);
@@ -121,4 +122,13 @@ form.addEventListener('reset', () => {
   clearForm();
   clearAdress();
 });
+
+const choosenAva = document.querySelector('.ad-form__field input');
+const choosenPhoto = document.querySelector('.ad-form__upload input');
+
+const previewAvatar = document.querySelector('.ad-form-header__preview img');
+const previewPhoto = document.querySelector('.ad-form__photo img');
+
+photoLoader(choosenAva, previewAvatar);
+photoLoader(choosenPhoto, previewPhoto);
 
