@@ -1,7 +1,7 @@
 import {MIN_PRICE, MAX_PRICE, MAX_ROOM, PRICE_TYPE, TOKYO_LAT_LNG} from './const.js';
 import {sameValue} from './util.js';
 import { setData } from './fetch.js';
-import { clearAdress } from './map.js';
+import { clearAddress } from './map.js';
 import { clearForm } from './util.js';
 import {photoLoader, clearAvatar, previewAvatar,  choosenAva, previewPhotoContainer, avaLoader} from './avatar.js';
 
@@ -120,7 +120,7 @@ form.addEventListener('submit', (evt) => {
 
 form.addEventListener('reset', () => {
   clearForm();
-  clearAdress();
+  clearAddress();
   clearAvatar();
 });
 

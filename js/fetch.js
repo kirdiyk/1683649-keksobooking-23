@@ -1,7 +1,7 @@
 import { HTTP_ADDRESS_GET, HTTP_ADDRESS_POST} from './const.js';
 import { getMessage, SUCCESS, ERROR } from './handler.js';
 import { showAlert, clearForm} from './util.js';
-import { clearAdress} from './map.js';
+import { clearAddress} from './map.js';
 import { clearAvatar } from './avatar.js';
 
 const getData = (onSuccess) => fetch(HTTP_ADDRESS_GET)
@@ -10,8 +10,7 @@ const getData = (onSuccess) => fetch(HTTP_ADDRESS_GET)
     onSuccess(advert);
   })
   .catch(() => {
-    // eslint-disable-next-line no-console
-    console.warn('При загрузке данных с сервера произошла ошибка!');
+    showAlert();
   });
 
 
@@ -27,7 +26,7 @@ const setData = (body) => {
       if (response.ok) {
         getMessage(SUCCESS);
         clearForm();
-        clearAdress();
+        clearAddress();
         clearAvatar();
       } else {
         getMessage(ERROR);
